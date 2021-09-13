@@ -70,7 +70,9 @@ const WeatherCard = ({ weather }) => {
   return (
     <Card className="card">
       <Heading>
-        <h3>{weather.name}</h3>
+        <h3>
+          {weather.name}, {weather.sys.country}
+        </h3>
         <img
           src={`${process.env.REACT_APP_IMG_URL}${weather.weather[0].icon}@2x.png`}
           alt={`${weather.weather[0].description}`}
