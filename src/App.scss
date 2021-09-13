@@ -4,16 +4,25 @@ $light: #4791db;
 .App {
   text-align: center;
 
-  .container {
-    text-align: center;
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
-    grid-gap: 16px;
+    .container {
+      text-align: center;
+      display: grid;
+      grid-template-columns: 33% 33% 33%;
 
-    .card {
-      background-color: $light;
-      border: 2px solid $primary;
-    }
+
+      @media (max-width: 1024px) {
+      grid-template-columns:  50% 50%;
+      }
+
+      @media (max-width: 768px) {
+      grid-template-columns:  100%;
+      }
+
+      .card {
+        background-color: $light;
+        border: 2px solid $primary;
+      }
+
   }
 }
 

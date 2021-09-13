@@ -11,8 +11,8 @@ const Card = styled.div`
 
 const Item = styled.div`
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-  grid-gap: 16px;
+  grid-template-columns: auto auto;
+  grid-gap: 24px;
 `;
 
 const Heading = styled.div`
@@ -24,7 +24,6 @@ const Heading = styled.div`
 `;
 
 const WeatherCard = ({ weather }) => {
-  console.log('weather', weather);
   const capitalizeFirstLetter = (string) => {
     return string.charAt(0).toUpperCase() + string.slice(1);
   };
@@ -83,8 +82,8 @@ const WeatherCard = ({ weather }) => {
         {capitalizeFirstLetter(weather.weather[0].description)}
       </h4>
       <Item>
-        <p>Max {weather.main.temp_max} &deg;C</p>
-        <p>Min {weather.main.temp_min} &deg;C</p>
+        <p>Max {weather.main.temp_max.toFixed(1)} &deg;C</p>
+        <p>Min {weather.main.temp_min.toFixed(1)} &deg;C</p>
         <p>
           Wind {windDirection(weather.wind.deg)} {weather.wind.speed} m/s
         </p>
