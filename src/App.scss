@@ -1,0 +1,12 @@
+.App {
+  text-align: center;
+
+  .container {
+    text-align: center;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(384px, 1fr));
+    grid-gap: 16px;
+  }
+}
+
+
