@@ -12,7 +12,8 @@ const Button = styled.button`
   background: transparent;
   color: #115293;
   border: 2px solid #115293;
-  :hover {
+  :hover,
+  :focus {
     cursor: pointer;
     background-color: #64b5f6;
   }
@@ -20,11 +21,16 @@ const Button = styled.button`
 
 function App() {
   return (
-    <div className="App">
+    <div role="main" className="App">
       <h1>Weather</h1>
       <h2>
-        {new Date().toLocaleString()}{' '}
-        <Button onClick={() => window.location.reload(false)}>Refresh</Button>
+        Last update at {new Date().toLocaleString()}{' '}
+        <Button
+          aria-label="Refresh"
+          onClick={() => window.location.reload(false)}
+        >
+          Refresh
+        </Button>
       </h2>
       <Weather />
     </div>
