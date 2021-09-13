@@ -15,18 +15,40 @@ const Item = styled.div`
   grid-gap: 16px;
 `;
 
+const Heading = styled.div`
+  > h3,
+  img {
+    display: inline-block;
+    vertical-align: bottom;
+  }
+`;
+
 const WeatherCard = ({ weather }) => {
   console.log('weather', weather);
+  const capitalizeFirstLetter = (string) => {
+    return string.charAt(0).toUpperCase() + string.slice(1);
+  };
+
   return (
     <Card className="card">
-      <h3>Melbourne</h3>
-      <h4>Feels like 10</h4>
+      <Heading>
+        <h3>{weather.name}</h3>
+        <img
+          src={`${process.env.REACT_APP_IMG_URL}${weather.weather[0].icon}@2x.png`}
+          alt={`${weather.weather[0].description}`}
+        />
+      </Heading>
+      <h4>
+        Feels like {weather.main.feels_like.toFixed(1)} &deg;C.{' '}
+        {capitalizeFirstLetter(weather.weather[0].description)}
+      </h4>
       <Item>
-        <p>Max</p>
-        <p>Min</p>
-        <p>Wind</p>
-        <p>Pressure</p>
-        <p>Humidity</p>
+        <p>Max {weather.main.temp_max} &deg;C</p>
+        <p>Min {weather.main.temp_min} &deg;C</p>
+        <p>Wind {weather.wind.speed} m/s</p>
+        <p>Pressure {weather.main.pressure} hPa</p>
+        <p>Humidity {weather.main.humidity}%</p>
+        <p>Visibility {(weather.visibility / 1000).toFixed(1)} km</p>
       </Item>
     </Card>
   );
