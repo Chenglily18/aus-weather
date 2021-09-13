@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
 const Card = styled.div`
@@ -14,7 +15,8 @@ const Item = styled.div`
   grid-gap: 16px;
 `;
 
-const WeatherCard = () => {
+const WeatherCard = ({ weather }) => {
+  console.log('weather', weather);
   return (
     <Card className="card">
       <h3>Melbourne</h3>
@@ -28,6 +30,10 @@ const WeatherCard = () => {
       </Item>
     </Card>
   );
+};
+
+WeatherCard.propTypes = {
+  weather: PropTypes.object,
 };
 
 export default WeatherCard;
