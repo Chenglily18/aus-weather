@@ -1,22 +1,28 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './App.scss';
 import Weather from './Components/Weather';
 
 function App() {
+  const [currentTime, setCurrentTime] = useState(new Date().toLocaleString());
+
+  const refresh = () => {
+    setCurrentTime(new Date().toLocaleString());
+  };
+
   return (
     <div role="main" className="App">
       <h1>Weather</h1>
       <h2>
-        Last update at {new Date().toLocaleString()}{' '}
+        Last update at {currentTime}{' '}
         <button
           className="refresh-button"
           aria-label="Refresh"
-          onClick={() => window.location.reload(false)}
+          onClick={() => refresh()}
         >
           Refresh
         </button>
       </h2>
-      <Weather />
+      <Weather currentTime={currentTime} />
     </div>
   );
 }

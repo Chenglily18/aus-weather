@@ -3,6 +3,7 @@ import WeatherCard from './WeatherCard/WeatherCard';
 import axios from 'axios';
 import { useDispatch, useSelector } from 'react-redux';
 import { ACTIONS } from '../Actions/Types';
+import PropTypes from 'prop-types';
 
 //City code available in http://bulk.openweathermap.org/sample/ city.list.json.gz
 const cities = [
@@ -90,7 +91,7 @@ const cities = [
   },
 ];
 
-const Weather = () => {
+const Weather = ({ currentTime }) => {
   const dispatch = useDispatch();
   const { data: cityWeather } = useSelector((state) => state.CityWeather);
   const [cityCodes] = useState(
@@ -101,6 +102,7 @@ const Weather = () => {
 
   // API to run on mounted to get data
   // Once data is retrieved, store in state
+  // Update then time changed
   useEffect(() => {
     axios
       .get(
@@ -113,7 +115,7 @@ const Weather = () => {
           payload: { data: data },
         });
       });
-  }, []);
+  }, [currentTime]);
 
   return (
     <div className="container">
@@ -126,6 +128,10 @@ const Weather = () => {
       )}
     </div>
   );
+};
+
+Weather.propTypes = {
+  currentTime: PropTypes.string,
 };
 
 export default Weather;

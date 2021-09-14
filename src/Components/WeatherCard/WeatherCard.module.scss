@@ -5,13 +5,13 @@
   border-radius: 10px;
 }
 
-.card-item {
+.cardItem {
   display: grid;
   grid-template-columns: auto auto;
   grid-gap: 24px;
 }
 
-.card-heading {
+.cardHeading {
   > h3,
   img {
     display: inline-block;
